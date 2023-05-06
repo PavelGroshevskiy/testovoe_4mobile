@@ -3,8 +3,9 @@ import React from "react";
 import "./App.css";
 
 import Search from "./components/Search";
-import CurrentWeather from "./components/current-weather/Current-Weather";
+import CurrentWeather from "./components/Current-Weather/Current-Weather";
 import WeatherService from "./API/WeatherService";
+import Forecast from "./components/Forecast/Forecast";
 
 function App() {
 	const [currentWeather, setCurrentWeather] = React.useState(null);
@@ -12,18 +13,17 @@ function App() {
 	const handleSearchChange = (searchData) => {
 		const [latitude, longitude] = searchData.value.split(" ");
 
-		const weather = WeatherService.getWeather(latitude, longitude);
+		const weather = WeatherService.getWeather({ latitude, longitude });
 		weather.then((responseWeather) => {
 			setCurrentWeather({ city: searchData.label, ...responseWeather });
 		});
 	};
 
-	console.log(currentWeather);
-
 	return (
 		<div className="App">
 			<Search onSearchChange={handleSearchChange} />
 			{currentWeather && <CurrentWeather data={currentWeather} />}
+			<Forecast data={currentWeather} />
 		</div>
 	);
 }
