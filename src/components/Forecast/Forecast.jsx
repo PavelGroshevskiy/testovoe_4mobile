@@ -6,7 +6,7 @@ const Forecast = ({ data }) => (
 	<Card title="Прогноз на неделю" style={{ marginTop: 60 + "px" }}>
 		<div
 			style={{
-				maxWidth: "100%",
+				minWidth: "900px",
 				display: "flex",
 				flexWrap: "wrap",
 				textAlign: "center",
@@ -93,13 +93,6 @@ const Forecast = ({ data }) => (
 										<>
 											<div>Ледяной Дождь</div>
 											<img src={`icons/${63}.png`} width={"80px"} />
-										</>
-									);
-								case 71 || 73 || 75:
-									return (
-										<>
-											<div>Снег</div>
-											<img src={`icons/${48}.png`} width={"80px"} />
 										</>
 									);
 								case 71 || 73 || 75:
