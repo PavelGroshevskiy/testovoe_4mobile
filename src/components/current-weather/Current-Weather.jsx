@@ -1,6 +1,13 @@
 import React from "react";
 import "./current-weather.css";
 
+const WEATHER_CODE_TO_LABEL = [
+	"Ясно",
+	"Преимущественно ясно",
+	"Переменная облачность",
+	"Пасмурно",
+];
+
 const CurrentWeather = ({ data }) => {
 	return (
 		<div className="weather">
@@ -8,26 +15,13 @@ const CurrentWeather = ({ data }) => {
 				<div>
 					<p className="city">{data.city}</p>
 					<p className="weather-description">
-						{(() => {
-							switch (data.current_weather.weathercode) {
-								case 0:
-									return "Ясно";
-								case 1:
-									return "Преимущественно ясно";
-								case 2:
-									return "Переменная облачность";
-								case 3:
-									return "Пасмурно";
-								default:
-									return null;
-							}
-						})()}
+						{WEATHER_CODE_TO_LABEL[data.current_weather.weathercode] ?? "Another weather"}
 					</p>
 				</div>
 				<img
 					alt="weather"
 					className="weather-icon"
-					src={`icons/${data.current_weather.weathercode}.png`}
+					srcSet={(`icons/${data.current_weather.weathercode}.png `, `icons/1.png`)}
 				/>
 			</div>
 			<div className="bottom">

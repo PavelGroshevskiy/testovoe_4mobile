@@ -11,7 +11,7 @@ function App() {
 	const [currentWeather, setCurrentWeather] = React.useState(null);
 
 	const handleSearchChange = (searchData) => {
-		const [latitude, longitude] = searchData.value.split(" ");
+		const [latitude, longitude] = searchData.value;
 
 		const weather = WeatherService.getWeather({ latitude, longitude });
 		weather.then((responseWeather) => {

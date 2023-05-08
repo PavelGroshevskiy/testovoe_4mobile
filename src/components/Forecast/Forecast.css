@@ -1,5 +1,10 @@
 .ant-card .ant-card-grid {
 	width: 128px;
 	text-align: center;
+
 	padding: 16px;
+}
+
+.ant-card-bordered {
+	margin-top: 60px;
 }

@@ -6,15 +6,18 @@ const Search = ({ onSearchChange }) => {
 
 	const loadOptions = (inputValue) => {
 		if (inputValue === "") {
-			return null;
+			return Promise.resolve({ options: [] });
 		} else {
 			return fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${inputValue}`)
 				.then((response) => response.json())
 				.then((response) => {
+					if (!response.results) {
+						return { options: [] };
+					}
 					return {
 						options: response.results.map((city) => {
 							return {
-								value: `${city.latitude} ${city.longitude}`,
+								value: [city.latitude, city.longitude],
 								label: `${city.name}`,
 							};
 						}),
