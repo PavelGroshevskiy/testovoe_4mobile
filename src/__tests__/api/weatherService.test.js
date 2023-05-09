@@ -4,6 +4,7 @@ describe("weatherService test", () => {
 	beforeEach(() => {
 		fetch.resetMocks();
 	});
+
 	test("should return response.data", (done) => {
 		const fetchResponse = {
 			is_day: 1,

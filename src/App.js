@@ -9,7 +9,6 @@ import Forecast from "./components/Forecast/Forecast";
 
 function App() {
 	const [currentWeather, setCurrentWeather] = React.useState(null);
-	console.log(currentWeather);
 
 	const handleSearchChange = (searchData) => {
 		const [latitude, longitude] = searchData.value;
