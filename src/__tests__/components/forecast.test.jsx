@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import Forecast from "../../components/Forecast/Forecast";
 
 describe("Forecast component test", () => {
@@ -15,8 +15,8 @@ describe("Forecast component test", () => {
 			},
 		};
 
-		const wrapper = shallow(<Forecast data={data} />);
+		const wrapper = mount(<Forecast data={data} />);
 
-		expect(wrapper.find("div.ant-card-grid").first()).toBe(data.daily.time);
+		expect(wrapper.find("div.ant-card-grid.time").text()).toBe(data.daily.time[0]);
 	});
 });

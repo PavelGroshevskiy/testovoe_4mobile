@@ -23,7 +23,7 @@ const Forecast = ({ data }) => {
 				}}
 			>
 				<Card.Grid>Дата</Card.Grid>
-				{console.log(time)}
+
 				{time &&
 					Array.from(time).map((item, idx) => (
 						<Card.Grid className="time" key={idx}>
